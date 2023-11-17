@@ -65,26 +65,27 @@ public class ControlPanelStarter {
     // Here we pretend that some events will be received with a given delay
     FakeCommunicationChannel spawner = new FakeCommunicationChannel(logic);
     logic.setCommunicationChannel(spawner);
-    spawner.spawnNode("4;3_window", 2);
-    spawner.spawnNode("1", 3);
-    spawner.spawnNode("1", 4);
-    spawner.advertiseSensorData("4;temperature=27.4 °C,temperature=26.8 °C,humidity=80 %", 4);
-    spawner.spawnNode("8;2_heater", 5);
-    spawner.advertiseActuatorState(4, 1, true, 5);
-    spawner.advertiseActuatorState(4,  1, false, 6);
-    spawner.advertiseActuatorState(4,  1, true, 7);
-    spawner.advertiseActuatorState(4,  2, true, 7);
-    spawner.advertiseActuatorState(4,  1, false, 8);
-    spawner.advertiseActuatorState(4,  2, false, 8);
-    spawner.advertiseActuatorState(4,  1, true, 9);
-    spawner.advertiseActuatorState(4,  2, true, 9);
-    spawner.advertiseSensorData("4;temperature=22.4 °C,temperature=26.0 °C,humidity=81 %", 9);
-    spawner.advertiseSensorData("1;humidity=80 %,humidity=82 %", 10);
-    spawner.advertiseRemovedNode(8, 11);
-    spawner.advertiseRemovedNode(8, 12);
-    spawner.advertiseSensorData("1;temperature=25.4 °C,temperature=27.0 °C,humidity=67 %", 13);
-    spawner.advertiseSensorData("4;temperature=25.4 °C,temperature=27.0 °C,humidity=82 %", 14);
-    spawner.advertiseSensorData("4;temperature=25.4 °C,temperature=27.0 °C,humidity=82 %", 16);
+    final int START_DELAY = 5;
+    spawner.spawnNode("4;3_window", START_DELAY);
+    spawner.spawnNode("1", START_DELAY + 1);
+    spawner.spawnNode("1", START_DELAY + 2);
+    spawner.advertiseSensorData("4;temperature=27.4 °C,temperature=26.8 °C,humidity=80 %", START_DELAY + 2);
+    spawner.spawnNode("8;2_heater", START_DELAY + 3);
+    spawner.advertiseActuatorState(4, 1, true, START_DELAY + 3);
+    spawner.advertiseActuatorState(4, 1, false, START_DELAY + 4);
+    spawner.advertiseActuatorState(4, 1, true, START_DELAY + 5);
+    spawner.advertiseActuatorState(4, 2, true, START_DELAY + 5);
+    spawner.advertiseActuatorState(4, 1, false, START_DELAY + 6);
+    spawner.advertiseActuatorState(4, 2, false, START_DELAY + 6);
+    spawner.advertiseActuatorState(4, 1, true, START_DELAY + 7);
+    spawner.advertiseActuatorState(4, 2, true, START_DELAY + 8);
+    spawner.advertiseSensorData("4;temperature=22.4 °C,temperature=26.0 °C,humidity=81 %", START_DELAY + 9);
+    spawner.advertiseSensorData("1;humidity=80 %,humidity=82 %", START_DELAY + 10);
+    spawner.advertiseRemovedNode(8, START_DELAY + 11);
+    spawner.advertiseRemovedNode(8, START_DELAY + 12);
+    spawner.advertiseSensorData("1;temperature=25.4 °C,temperature=27.0 °C,humidity=67 %", START_DELAY + 13);
+    spawner.advertiseSensorData("4;temperature=25.4 °C,temperature=27.0 °C,humidity=82 %", START_DELAY + 14);
+    spawner.advertiseSensorData("4;temperature=25.4 °C,temperature=27.0 °C,humidity=82 %", START_DELAY + 16);
     return spawner;
   }
 
